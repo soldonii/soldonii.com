@@ -12,7 +12,7 @@ const MusicNerd = () => {
   const [ current, setCurrent ] = useState(null);
   const linkItem = [
     { title: 'Local Login', image: localLogin },
-    { title: 'Select Artits', image: selectArtists },
+    { title: 'Select Artists', image: selectArtists },
     { title: 'Game Play', image: play },
     { title: 'User Profile', image: profile },
   ];

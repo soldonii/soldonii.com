@@ -21,6 +21,15 @@ const TravelLog = () => {
 
   return (
     <DefaultLayout>
+      <a
+        href='https://github.com/soldonii/TravelLog-client'
+        className='link'
+        target='_blank'
+        rel='noopener noreferrer'
+        style={{ fontSize: '2rem', position: 'absolute', right: '2rem', top: '7rem' }}
+      >
+        github link
+      </a>
       <Links
         current={current}
         setCurrent={setCurrent}

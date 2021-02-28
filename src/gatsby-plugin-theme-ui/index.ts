@@ -1,6 +1,34 @@
-import novelaTheme from '@narative/gatsby-theme-novela/src/gatsby-plugin-theme-ui';
+import merge from 'lodash/merge';
 
-export default {
-  ...novelaTheme,
-  initialColorMode: `dark`,
+import colors from './colors';
+import tags from './tags';
+
+const breakpoints = [
+  ['phone_small', 320],
+  ['phone', 376],
+  ['phablet', 540],
+  ['tablet', 735],
+  ['desktop', 1070],
+  ['desktop_medium', 1280],
+  ['desktop_large', 1440],
+];
+
+const fonts = {
+  serif: "'Spoqa Han Sans', 'Merriweather', Georgia, Serif",
+  sansSerif:
+    "'Spoqa Han Sans', 'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
+  monospace: `'Spoqa Han Sans', "Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
 };
+
+const colorModeTransition =
+  'background 0.25s var(--ease-in-out-quad), color 0.25s var(--ease-in-out-quad)';
+
+export default merge({
+  initialColorMode: 'dark',
+  useCustomProperties: true,
+  colorModeTransition,
+  colors,
+  fonts,
+  breakpoints,
+  tags,
+});

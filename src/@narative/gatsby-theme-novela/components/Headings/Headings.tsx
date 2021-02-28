@@ -5,8 +5,8 @@ import mediaqueries from "@narative/gatsby-theme-novela/src/styles/media";
 
 const commonStyles = p => css`
   font-weight: bold;
+  font-family: 'Spoqa Han Sans';
   color: ${p.theme.colors.primary};
-  font-family: ${p.theme.fonts.monospace};
 `;
 
 const h1 = styled.h1`

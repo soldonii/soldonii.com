@@ -135,7 +135,6 @@ const PrismCSS = p => css`
     font-size: 13px;
     margin: 15px auto 50px;
     border-radius: 5px;
-    font-family: ${p.theme.fonts.monospace};
     background: ${p.theme.colors.prism.background};
 
     .token-line {

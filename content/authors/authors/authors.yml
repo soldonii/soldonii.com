@@ -1,0 +1,10 @@
+- name: Hyunsol Do
+  bio: |
+    Web Frontend Engineer soldonii의 블로그입니다.
+  avatar: ./avatars/hyunsol.jpg
+  featured: true
+  social:
+    - url: https://github.com/soldonii
+    - url: https://instagram.com/soldonii
+    - url: https://www.linkedin.com/in/hyunsol-do-91058a189
+

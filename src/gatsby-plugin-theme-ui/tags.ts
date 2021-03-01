@@ -2,7 +2,7 @@ export default {
   pre: {
     variant: `prism`,
     fontFamily: `"Operator Mono", monospace`,
-    tabSize: 4,
+    tabSize: 2,
     hyphens: `none`,
     color: `white`,
     bg: `prism.background`,

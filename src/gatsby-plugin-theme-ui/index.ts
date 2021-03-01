@@ -14,10 +14,10 @@ const breakpoints = [
 ];
 
 const fonts = {
-  serif: "'Spoqa Han Sans', 'Merriweather', Georgia, Serif",
+  serif: "'-apple-system'",
   sansSerif:
-    "'Spoqa Han Sans', 'SF Pro Display', '-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Ubuntu', 'Roboto', 'Noto', 'Segoe UI', 'Arial', sans-serif",
-  monospace: `'Spoqa Han Sans', "Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
+    "'-apple-system'",
+  monospace: `'-apple-system', "Operator Mono", Consolas, Menlo, Monaco, source-code-pro, Courier New, monospace`,
 };
 
 const colorModeTransition =

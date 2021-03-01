@@ -4,6 +4,8 @@ author: Hyunsol Do
 date: 2021-04-30
 hero: ./images/hero.jpg
 excerpt: With the growing community interest in Gatsby, we hope to create more resources that make it easier for anyone to grasp the power of this incredible tool.
+slug: firstPost
+secret: false
 ---
 
 My first post using `@narative/gatsby-theme-novela`. Novela is built by the team at [Narative](https://narative.co), and built for everyone that loves the web.
@@ -114,6 +116,20 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 > This line is part of the same quote.
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+
+### 표를 그려요 방구쟁이들아
+
+
+
+| 안녕   | 방구   | 쟁이 |
+| ------ | ------ | ---- |
+| 금혜원 | 현솔   | 도   |
+| 방구   | 하루에 | 세번 |
+| 이상   | 뀌면   | 금지 |
+
+
+
+
 
 ## Horizontal Rule
 

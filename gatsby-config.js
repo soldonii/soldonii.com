@@ -53,5 +53,13 @@ module.exports = {
       options: {
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-H26B4Z0LPF"
+        ]
+      }
+    }
   ],
 };

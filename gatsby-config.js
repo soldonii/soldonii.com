@@ -60,6 +60,21 @@ module.exports = {
           "G-H26B4Z0LPF"
         ]
       }
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://soldonii.com',
+        sitemap: 'https://soldonii.com/sitemap.xml',
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/']}],
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/'}],
+          }
+        }
+      }
     }
   ],
 };

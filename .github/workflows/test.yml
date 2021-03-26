@@ -43,7 +43,10 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string
           script: |
-            console.log('result', process.env.RESULT)
+            console.log('github', github)
+            console.log('context', context)
+            console.log('core', core)
+            console.log('io', io)
 
             github.issues.createComment({
               issue_number: context.issue.number,

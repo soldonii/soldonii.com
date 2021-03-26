@@ -61,7 +61,16 @@ jobs:
           result-encoding: string
           script: |
             console.log(context)
-            console.log(github)
+            console.log('github', github)
+            console.log('env', env)
+            console.log('job', job)
+            console.log('steps', steps)
+            console.log('runner', runner)
+            console.log('secrets', secrets)
+            console.log('strategy', strategy)
+            console.log('matrix', matrix)
+            console.log('needs', needs)
+
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,

@@ -38,7 +38,7 @@ jobs:
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
         env:
-          RESULT: "terraform\n${{ steps.cancel_outdated_jobs.outputs }}"
+          RESULT: "terraform\n${{ JSON.parse(steps.cancel_outdated_jobs.outputs) }}"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string

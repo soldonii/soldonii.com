@@ -46,7 +46,6 @@ jobs:
             console.log('github', github)
             console.log('context', context)
             console.log('core', core)
-            console.log('io', io)
 
             github.issues.createComment({
               issue_number: context.issue.number,

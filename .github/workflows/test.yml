@@ -19,6 +19,7 @@ jobs:
         uses: rokroskar/workflow-run-cleanup-action@v0.3.0
         env:
           GITHUB_TOKEN: "${{ secrets.helloworld }}"
+        run: echo '::error::${{ steps.cancel_outdated_jobs.outputs.stdout }}'
       - uses: actions/checkout@v2
         id: step2
         with:
@@ -43,8 +44,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string
           script: |
-            console.log('github', github)
-            console.log('context', context)
             console.log('error', core.error())
 
             github.issues.createComment({

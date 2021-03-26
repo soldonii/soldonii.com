@@ -56,7 +56,7 @@ jobs:
       - name: Pull Request Comment
         env:
           JOB_CONTEXT: ${{ toJSON(job) }}
-          STEPS_CONTEXT: ${{ steps }}
+          STEPS_CONTEXT: ${{ toJSON(steps) }}
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
         with:

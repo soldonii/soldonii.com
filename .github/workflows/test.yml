@@ -17,7 +17,7 @@ jobs:
       - name: Cancel outdated jobs
         uses: rokroskar/workflow-run-cleanup-action@v0.3.0
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.helloworld }}"
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
@@ -31,7 +31,7 @@ jobs:
         run: yarn build
       - name: Pull Request Comment
         uses: actions/github-script@0.9.0
-        if: (${{ failure() }}) && (github.event_name == 'pull_request')
+        if: ${{ failure() }
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string

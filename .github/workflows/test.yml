@@ -17,7 +17,7 @@ jobs:
       - name: Cancel outdated jobs
         uses: rokroskar/workflow-run-cleanup-action@v0.3.0
         env:
-          GITHUB_TOKEN: "${{ secrets.GH_TOSSPAYMENTS_BOT_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0

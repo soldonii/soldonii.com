@@ -41,7 +41,7 @@ jobs:
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
         env:
-          RESULT: ${{ jobs.ci.outputs.stdout }}
+          RESULT: ${{ steps.step1.outputs.stdout }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string

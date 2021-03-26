@@ -61,6 +61,7 @@ jobs:
           result-encoding: string
           script: |
             console.log(context)
+            console.log(github)
             github.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,

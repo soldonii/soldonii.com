@@ -19,6 +19,7 @@ jobs:
         uses: rokroskar/workflow-run-cleanup-action@v0.3.0
         env:
           GITHUB_TOKEN: "${{ secrets.helloworld }}"
+        continue-on-error: true
       - uses: actions/checkout@v2
         id: step2
         with:

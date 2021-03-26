@@ -54,6 +54,9 @@ jobs:
       - name: Build
         run: yarn build
       - name: Pull Request Comment
+        env:
+          JOB_CONTEXT: ${{ toJSON(job) }}
+          STEPS_CONTEXT: ${{ steps }}
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
         with:
@@ -61,15 +64,8 @@ jobs:
           result-encoding: string
           script: |
             console.log(context)
-            console.log('github', github)
-            console.log('env', env)
-            console.log('job', job)
-            console.log('steps', steps)
-            console.log('runner', runner)
-            console.log('secrets', secrets)
-            console.log('strategy', strategy)
-            console.log('matrix', matrix)
-            console.log('needs', needs)
+            console.log('$JOB_CONTEXT', $JOB_CONTEXT)
+            console.log('$STEPS_CONTEXT', $STEPS_CONTEXT)
 
             github.issues.createComment({
               issue_number: context.issue.number,

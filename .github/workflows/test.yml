@@ -13,6 +13,9 @@ jobs:
     name: CI
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    outputs:
+      total: ${{ steps }}
+      output1: ${{ steps.step1.outputs.test }}
     steps:
       - name: Cancel outdated jobs
         id: step1
@@ -36,8 +39,6 @@ jobs:
         run: yarn build
       - name: Pull Request Comment
         id: step6
-        outputs:
-          output1: ${{ steps.step1.outputs.test }}
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
         with:
@@ -45,8 +46,7 @@ jobs:
           result-encoding: string
           script: |
             console.log(context)
-            console.log('$JOB_CONTEXT', $JOB_CONTEXT)
-            console.log('$STEPS_CONTEXT', $STEPS_CONTEXT)
+            console.log(outputs)
 
             github.issues.createComment({
               issue_number: context.issue.number,

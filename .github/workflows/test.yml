@@ -44,7 +44,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string
           script: |
-            console.log('error', core.error())
+            console.log(process.env.RESULT)
 
             github.issues.createComment({
               issue_number: context.issue.number,

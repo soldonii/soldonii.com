@@ -14,21 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     steps:
-      - name: Cancel outdated jobs
-        uses: rokroskar/workflow-run-cleanup-action@v0.3.0
-        env:
-          GITHUB_TOKEN: "${{ secrets.helloworld }}"
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Use Node.js
-        uses: actions/setup-node@v1
-        with:
-          node-version: "12.16.3"
-      - name: Install dependencies
-        run: yarn install --immutable
-      - name: Build
-        run: yarn build
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
@@ -53,6 +38,21 @@ jobs:
         env:
           MATRIX_CONTEXT: ${{ toJSON(matrix) }}
         run: echo "$MATRIX_CONTEXT"
+      - name: Cancel outdated jobs
+        uses: rokroskar/workflow-run-cleanup-action@v0.3.0
+        env:
+          GITHUB_TOKEN: "${{ secrets.helloworld }}"
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12.16.3"
+      - name: Install dependencies
+        run: yarn install --immutable
+      - name: Build
+        run: yarn build
       - name: Pull Request Comment
         uses: actions/github-script@0.9.0
         if: ${{ failure() }}

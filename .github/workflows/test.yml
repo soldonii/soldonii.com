@@ -12,7 +12,6 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
-    id: ci
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     outputs:
       output: ${{ steps.step1.outputs.stdout }}

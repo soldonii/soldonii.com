@@ -12,10 +12,10 @@ jobs:
   ci:
     name: CI
     runs-on: ubuntu-latest
+    id: ci
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     outputs:
-      total: ${{ steps }}
-      output1: ${{ steps.step1.outputs.test }}
+      output: ${{ steps.step1.outputs.stdout }}
     steps:
       - name: Cancel outdated jobs
         id: step1
@@ -41,12 +41,13 @@ jobs:
         id: step6
         uses: actions/github-script@0.9.0
         if: ${{ failure() && github.event_name == 'pull_request' }}
+        env:
+          RESULT: ${{ jobs.ci.outputs.stdout }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           result-encoding: string
           script: |
-            console.log(context)
-            console.log(outputs)
+            console.log(process.env.RESULT)
 
             github.issues.createComment({
               issue_number: context.issue.number,

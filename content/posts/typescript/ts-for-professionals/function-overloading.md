@@ -4,7 +4,7 @@ author: Hyunsol Do
 date: 2021-04-24
 excerpt: function overloading에 대해서 정리한 내용입니다.
 hero: ../hero/typescript.jpg
-slug: user-defined-type-guards
+slug: function-overloading
 secret: false
 ---
 

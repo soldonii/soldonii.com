@@ -3,11 +3,12 @@ title: TypeScript for Professionals 강의(Udemy)
 author: Hyunsol Do
 date: 2021-04-24
 excerpt: TypeScript for Professionals 강의 중 정리할 내용을 기록한 포스팅
+hero: ./images/typescript.jpg
 slug: ts-for-professionals
 secret: false
 ---
 
-### User Defined Type Guards
+## 1. User Defined Type Guards
 
 여러 union 타입 중 어떤 타입인지를 narrowing하는 방법을 알아보자.
 
@@ -148,3 +149,86 @@ function area(shape: Shape) {
   // ...
 }
 ```
+
+## 2. Assertion Functions
+
+```typescript
+type Person = {
+  name: string;
+  dateOfBirth?: date;
+};
+
+function assert(condition: unknown, message: string) {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+const maybePerson = loadPerson();
+
+assert(maybePerson != null, "Could not load person");
+console.log("Name: ", mayberPerson.name);
+// maybePerson은 Person | null로 추론된다.
+```
+
+위 사례와 유사하게, 사실 assert 함수를 통과했다면(error가 던져지지 않았다면) maybePerson은 `Person` 타입을 가질 것이다. 하지만 타입스크립트는 implicit하게 console.log 라인에서 `maybePerson`이 `Person`임을 알지 못한다. 이를 알게 해주려면 다음과 같은 explicit type assertion이 필요하다.
+
+```typescript
+type Person = {
+  name: string;
+  dateOfBirth?: Date;
+};
+
+function assert(condition: unknown, message: string): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+const maybePerson = loadPerson();
+
+assert(maybePerson != null, "Could not load person");
+console.log("Name: ", mayberPerson.name);
+// maybePerson은 Person | null로 추론된다.
+```
+
+assert 함수의 return 타입에 `asserts condition`을 추가해줬다. 이는 만약 이 함수가 실행되면 `condition` 파라미터 값을 리턴한다는 것을 명시적으로 알려주는 것이다.
+
+함수 내부에서 `!condition`을 통해 condition이 false인 경우는 대응이 되었기 때문에, 이 함수가 실행된 이후에는 `condition`에 해당되는 `maybePerson != null`이 true라고 추론할 수 있게 된다. 즉, maybePerson이 null이 아니게 되기 때문에 `mayberPerson.name`에서 null 추론은 빠지고 `Person`으로만 타입이 추론된다.
+
+다른 사례로 조금 더 나아간 용례를 보자.
+
+```typescript
+type Person = {
+  name: string;
+  dateOfBirth?: Date;
+};
+
+function assertDate(value: unknown) {
+  if (value instanceof Date) {
+    return;
+  } else {
+    throw new TypeError("value is not a Date");
+  }
+}
+
+const maybePerson = loadPerson();
+
+assertDate(maybePerson.dateOfBirth);
+console.log("Date of Birth: ", maybePerson.dateOfBirth.toISOString());
+// maybePerson.dateOfBirth가 undefined일 수 있기 때문에 타입 에러가 난다.
+```
+
+이를 해결해주기 위해 위와 같이 동일한 방법을 적용해보자.
+
+```typescript
+function assertDate(value: unknown): asserts value is Date {
+  if (value instanceof Date) {
+    return;
+  } else {
+    throw new TypeError("value is not a Date");
+  }
+}
+```
+
+이렇게하면 만약 `assertDate` 함수가 error를 던지지 않았으면, value의 타입은 Date라고 추론해준다. 따라서 `toISOString()` 메소드를 타입 safe하게 사용할 수 있다.
